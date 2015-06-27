@@ -22,7 +22,6 @@ class extractor(object):
 
 	def getSentimentScore(self,message):
 		message = self.filter.process(message)
-
 		emo = re.findall(r"(\w+)#\(([+-]*\d+.\d+)\)#",message.decode("utf-8"))
 		emoScore = 0.0
 		for e in emo:
@@ -42,7 +41,6 @@ class extractor(object):
 			predScore = emoScore
 		elif len(emo) >= 1:
 			predScore = 0.35 * predScore + 0.65 * emoScore
-
 		return float(predScore)
 
 # #### TEST
