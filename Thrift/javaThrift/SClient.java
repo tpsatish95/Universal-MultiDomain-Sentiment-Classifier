@@ -1,5 +1,3 @@
-package javaThrift;
-
 /**
  * Copyright 2015 Satish Palaniappan
  *
@@ -24,9 +22,6 @@ import org.apache.thrift.transport.TSocket;
 import org.apache.thrift.transport.TTransport;
 import org.apache.thrift.transport.TTransportException;
 
-// import javaThrift.SentiRequestObject;
-// import javaThrift.Sentiments;
-
 public class SClient {
     String ip;
     int port;
@@ -43,12 +38,16 @@ public class SClient {
             {
                 protocol = new TBinaryProtocol(transport);
                 client = new Sentiments.Client(protocol);
-                transport.open();
+                try {
+                    transport.open();
+                } catch (TTransportException e) {
+                    e.printStackTrace();
+                }
             }
 
     }
 
-    public String getSentiment(String mainText,String textType) {
+    public String getSentimentScore(String mainText,String textType) {
         try {
 
             SentiRequestObject obj = new SentiRequestObject();
@@ -69,7 +68,7 @@ public class SClient {
         return "Connection to " + this.ip + ":" + this.port + " failed!";
     }
 
-    public String getSentiment(String mainText,String title,String topDomain,String subDomain) {
+    public String getSentimentScore(String mainText,String title,String topDomain,String subDomain) {
         try {
             SentiRequestObject obj = new SentiRequestObject();
             obj.setMainText(mainText);
@@ -92,7 +91,7 @@ public class SClient {
         transport.close();
         return "Connection to " + this.ip + ":" + this.port + " failed!";
     }
-    public String getSentiment(String mainText,String title,String middleParas,String lastPara, int diffBlog) {
+    public String getSentimentScore(String mainText,String title,String middleParas,String lastPara, int diffBlog) {
 
         // "diffBlog" parameter can be set with any integer (added as a dummy parameter to support method overloading)
 
@@ -119,12 +118,12 @@ public class SClient {
         transport.close();
         return "Connection to " + this.ip + ":" + this.port + " failed!";
     }
-
-   public static void main(String [] Args)
-   {
-     SClient c = new SClient("localhost",8002);
-     System.out.println(c.getSentimentScore("This phone is shit !","microblogs"));
-
-   }
+//
+//   public static void main(String [] Args)
+//   {
+//     SClient c = new SClient("localhost",8002);
+//     System.out.println(c.getSentimentScore("This phone is shit !","microblogs"));
+//
+//   }
 
 }

@@ -37,17 +37,17 @@ public class Sentiments {
 
   public interface Iface {
 
-    public void ping() throws org.apache.thrift.TException;
+    public void ping() throws TException;
 
-    public int getSentimentScore(SentiRequestObject obj) throws org.apache.thrift.TException;
+    public int getSentimentScore(SentiRequestObject obj) throws TException;
 
   }
 
   public interface AsyncIface {
 
-    public void ping(org.apache.thrift.async.AsyncMethodCallback resultHandler) throws org.apache.thrift.TException;
+    public void ping(AsyncMethodCallback resultHandler) throws TException;
 
-    public void getSentimentScore(SentiRequestObject obj, org.apache.thrift.async.AsyncMethodCallback resultHandler) throws org.apache.thrift.TException;
+    public void getSentimentScore(SentiRequestObject obj, AsyncMethodCallback resultHandler) throws TException;
 
   }
 
@@ -71,39 +71,39 @@ public class Sentiments {
       super(iprot, oprot);
     }
 
-    public void ping() throws org.apache.thrift.TException
+    public void ping() throws TException
     {
       send_ping();
       recv_ping();
     }
 
-    public void send_ping() throws org.apache.thrift.TException
+    public void send_ping() throws TException
     {
       ping_args args = new ping_args();
       sendBase("ping", args);
     }
 
-    public void recv_ping() throws org.apache.thrift.TException
+    public void recv_ping() throws TException
     {
       ping_result result = new ping_result();
       receiveBase(result, "ping");
       return;
     }
 
-    public int getSentimentScore(SentiRequestObject obj) throws org.apache.thrift.TException
+    public int getSentimentScore(SentiRequestObject obj) throws TException
     {
       send_getSentimentScore(obj);
       return recv_getSentimentScore();
     }
 
-    public void send_getSentimentScore(SentiRequestObject obj) throws org.apache.thrift.TException
+    public void send_getSentimentScore(SentiRequestObject obj) throws TException
     {
       getSentimentScore_args args = new getSentimentScore_args();
       args.setObj(obj);
       sendBase("getSentimentScore", args);
     }
 
-    public int recv_getSentimentScore() throws org.apache.thrift.TException
+    public int recv_getSentimentScore() throws TException
     {
       getSentimentScore_result result = new getSentimentScore_result();
       receiveBase(result, "getSentimentScore");
@@ -131,7 +131,7 @@ public class Sentiments {
       super(protocolFactory, clientManager, transport);
     }
 
-    public void ping(org.apache.thrift.async.AsyncMethodCallback resultHandler) throws org.apache.thrift.TException {
+    public void ping(AsyncMethodCallback resultHandler) throws TException {
       checkReady();
       ping_call method_call = new ping_call(resultHandler, this, ___protocolFactory, ___transport);
       this.___currentMethod = method_call;
@@ -139,19 +139,19 @@ public class Sentiments {
     }
 
     public static class ping_call extends org.apache.thrift.async.TAsyncMethodCall {
-      public ping_call(org.apache.thrift.async.AsyncMethodCallback resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
+      public ping_call(AsyncMethodCallback resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws TException {
         super(client, protocolFactory, transport, resultHandler, false);
       }
 
-      public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
+      public void write_args(org.apache.thrift.protocol.TProtocol prot) throws TException {
         prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("ping", org.apache.thrift.protocol.TMessageType.CALL, 0));
         ping_args args = new ping_args();
         args.write(prot);
         prot.writeMessageEnd();
       }
 
-      public void getResult() throws org.apache.thrift.TException {
-        if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
+      public void getResult() throws TException {
+        if (getState() != State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
         org.apache.thrift.transport.TMemoryInputTransport memoryTransport = new org.apache.thrift.transport.TMemoryInputTransport(getFrameBuffer().array());
@@ -160,7 +160,7 @@ public class Sentiments {
       }
     }
 
-    public void getSentimentScore(SentiRequestObject obj, org.apache.thrift.async.AsyncMethodCallback resultHandler) throws org.apache.thrift.TException {
+    public void getSentimentScore(SentiRequestObject obj, AsyncMethodCallback resultHandler) throws TException {
       checkReady();
       getSentimentScore_call method_call = new getSentimentScore_call(obj, resultHandler, this, ___protocolFactory, ___transport);
       this.___currentMethod = method_call;
@@ -169,12 +169,12 @@ public class Sentiments {
 
     public static class getSentimentScore_call extends org.apache.thrift.async.TAsyncMethodCall {
       private SentiRequestObject obj;
-      public getSentimentScore_call(SentiRequestObject obj, org.apache.thrift.async.AsyncMethodCallback resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
+      public getSentimentScore_call(SentiRequestObject obj, AsyncMethodCallback resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws TException {
         super(client, protocolFactory, transport, resultHandler, false);
         this.obj = obj;
       }
 
-      public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
+      public void write_args(org.apache.thrift.protocol.TProtocol prot) throws TException {
         prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("getSentimentScore", org.apache.thrift.protocol.TMessageType.CALL, 0));
         getSentimentScore_args args = new getSentimentScore_args();
         args.setObj(obj);
@@ -182,8 +182,8 @@ public class Sentiments {
         prot.writeMessageEnd();
       }
 
-      public int getResult() throws org.apache.thrift.TException {
-        if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
+      public int getResult() throws TException {
+        if (getState() != State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
         org.apache.thrift.transport.TMemoryInputTransport memoryTransport = new org.apache.thrift.transport.TMemoryInputTransport(getFrameBuffer().array());
@@ -223,7 +223,7 @@ public class Sentiments {
         return false;
       }
 
-      public ping_result getResult(I iface, ping_args args) throws org.apache.thrift.TException {
+      public ping_result getResult(I iface, ping_args args) throws TException {
         ping_result result = new ping_result();
         iface.ping();
         return result;
@@ -243,7 +243,7 @@ public class Sentiments {
         return false;
       }
 
-      public getSentimentScore_result getResult(I iface, getSentimentScore_args args) throws org.apache.thrift.TException {
+      public getSentimentScore_result getResult(I iface, getSentimentScore_args args) throws TException {
         getSentimentScore_result result = new getSentimentScore_result();
         result.success = iface.getSentimentScore(args.obj);
         result.setSuccessIsSet(true);
@@ -314,7 +314,7 @@ public class Sentiments {
         return false;
       }
 
-      public void start(I iface, ping_args args, org.apache.thrift.async.AsyncMethodCallback<Void> resultHandler) throws TException {
+      public void start(I iface, ping_args args, AsyncMethodCallback<Void> resultHandler) throws TException {
         iface.ping(resultHandler);
       }
     }
@@ -366,7 +366,7 @@ public class Sentiments {
         return false;
       }
 
-      public void start(I iface, getSentimentScore_args args, org.apache.thrift.async.AsyncMethodCallback<Integer> resultHandler) throws TException {
+      public void start(I iface, getSentimentScore_args args, AsyncMethodCallback<Integer> resultHandler) throws TException {
         iface.getSentimentScore(args.obj,resultHandler);
       }
     }
@@ -523,11 +523,11 @@ public class Sentiments {
       return _Fields.findByThriftId(fieldId);
     }
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot) throws TException {
       schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot) throws TException {
       schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
     }
 
@@ -540,7 +540,7 @@ public class Sentiments {
       return sb.toString();
     }
 
-    public void validate() throws org.apache.thrift.TException {
+    public void validate() throws TException {
       // check for required fields
       // check for sub-struct validity
     }
@@ -548,7 +548,7 @@ public class Sentiments {
     private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
       try {
         write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
-      } catch (org.apache.thrift.TException te) {
+      } catch (TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -556,7 +556,7 @@ public class Sentiments {
     private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException {
       try {
         read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
-      } catch (org.apache.thrift.TException te) {
+      } catch (TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -569,7 +569,7 @@ public class Sentiments {
 
     private static class ping_argsStandardScheme extends StandardScheme<ping_args> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, ping_args struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, ping_args struct) throws TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -590,7 +590,7 @@ public class Sentiments {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, ping_args struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, ping_args struct) throws TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -609,12 +609,12 @@ public class Sentiments {
     private static class ping_argsTupleScheme extends TupleScheme<ping_args> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, ping_args struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, ping_args struct) throws TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, ping_args struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, ping_args struct) throws TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
       }
     }
@@ -771,11 +771,11 @@ public class Sentiments {
       return _Fields.findByThriftId(fieldId);
     }
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot) throws TException {
       schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot) throws TException {
       schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
       }
 
@@ -788,7 +788,7 @@ public class Sentiments {
       return sb.toString();
     }
 
-    public void validate() throws org.apache.thrift.TException {
+    public void validate() throws TException {
       // check for required fields
       // check for sub-struct validity
     }
@@ -796,7 +796,7 @@ public class Sentiments {
     private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
       try {
         write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
-      } catch (org.apache.thrift.TException te) {
+      } catch (TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -804,7 +804,7 @@ public class Sentiments {
     private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException {
       try {
         read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
-      } catch (org.apache.thrift.TException te) {
+      } catch (TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -817,7 +817,7 @@ public class Sentiments {
 
     private static class ping_resultStandardScheme extends StandardScheme<ping_result> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, ping_result struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, ping_result struct) throws TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -838,7 +838,7 @@ public class Sentiments {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, ping_result struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, ping_result struct) throws TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -857,12 +857,12 @@ public class Sentiments {
     private static class ping_resultTupleScheme extends TupleScheme<ping_result> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, ping_result struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, ping_result struct) throws TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, ping_result struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, ping_result struct) throws TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
       }
     }
@@ -1099,11 +1099,11 @@ public class Sentiments {
       return _Fields.findByThriftId(fieldId);
     }
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot) throws TException {
       schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot) throws TException {
       schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
     }
 
@@ -1123,7 +1123,7 @@ public class Sentiments {
       return sb.toString();
     }
 
-    public void validate() throws org.apache.thrift.TException {
+    public void validate() throws TException {
       // check for required fields
       // check for sub-struct validity
       if (obj != null) {
@@ -1134,7 +1134,7 @@ public class Sentiments {
     private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
       try {
         write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
-      } catch (org.apache.thrift.TException te) {
+      } catch (TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -1142,7 +1142,7 @@ public class Sentiments {
     private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException {
       try {
         read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
-      } catch (org.apache.thrift.TException te) {
+      } catch (TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -1155,7 +1155,7 @@ public class Sentiments {
 
     private static class getSentimentScore_argsStandardScheme extends StandardScheme<getSentimentScore_args> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, getSentimentScore_args struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, getSentimentScore_args struct) throws TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -1185,7 +1185,7 @@ public class Sentiments {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, getSentimentScore_args struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, getSentimentScore_args struct) throws TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -1209,7 +1209,7 @@ public class Sentiments {
     private static class getSentimentScore_argsTupleScheme extends TupleScheme<getSentimentScore_args> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, getSentimentScore_args struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, getSentimentScore_args struct) throws TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetObj()) {
@@ -1222,7 +1222,7 @@ public class Sentiments {
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, getSentimentScore_args struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, getSentimentScore_args struct) throws TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
@@ -1467,11 +1467,11 @@ public class Sentiments {
       return _Fields.findByThriftId(fieldId);
     }
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot) throws TException {
       schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot) throws TException {
       schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
       }
 
@@ -1487,7 +1487,7 @@ public class Sentiments {
       return sb.toString();
     }
 
-    public void validate() throws org.apache.thrift.TException {
+    public void validate() throws TException {
       // check for required fields
       // check for sub-struct validity
     }
@@ -1495,7 +1495,7 @@ public class Sentiments {
     private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
       try {
         write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
-      } catch (org.apache.thrift.TException te) {
+      } catch (TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -1505,7 +1505,7 @@ public class Sentiments {
         // it doesn't seem like you should have to do this, but java serialization is wacky, and doesn't call the default constructor.
         __isset_bitfield = 0;
         read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
-      } catch (org.apache.thrift.TException te) {
+      } catch (TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -1518,7 +1518,7 @@ public class Sentiments {
 
     private static class getSentimentScore_resultStandardScheme extends StandardScheme<getSentimentScore_result> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, getSentimentScore_result struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, getSentimentScore_result struct) throws TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -1547,7 +1547,7 @@ public class Sentiments {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, getSentimentScore_result struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, getSentimentScore_result struct) throws TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -1571,7 +1571,7 @@ public class Sentiments {
     private static class getSentimentScore_resultTupleScheme extends TupleScheme<getSentimentScore_result> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, getSentimentScore_result struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, getSentimentScore_result struct) throws TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetSuccess()) {
@@ -1584,7 +1584,7 @@ public class Sentiments {
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, getSentimentScore_result struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, getSentimentScore_result struct) throws TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {

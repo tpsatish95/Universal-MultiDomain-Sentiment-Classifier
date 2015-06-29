@@ -714,11 +714,11 @@ public class SentiRequestObject implements org.apache.thrift.TBase<SentiRequestO
     return _Fields.findByThriftId(fieldId);
   }
 
-  public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
+  public void read(org.apache.thrift.protocol.TProtocol iprot) throws TException {
     schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
   }
 
-  public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
+  public void write(org.apache.thrift.protocol.TProtocol oprot) throws TException {
     schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
   }
 
@@ -798,10 +798,10 @@ public class SentiRequestObject implements org.apache.thrift.TBase<SentiRequestO
     return sb.toString();
   }
 
-  public void validate() throws org.apache.thrift.TException {
+  public void validate() throws TException {
     // check for required fields
     if (mainText == null) {
-      throw new org.apache.thrift.protocol.TProtocolException("Required field 'mainText' was not present! Struct: " + toString());
+      throw new TProtocolException("Required field 'mainText' was not present! Struct: " + toString());
     }
     // check for sub-struct validity
   }
@@ -809,7 +809,7 @@ public class SentiRequestObject implements org.apache.thrift.TBase<SentiRequestO
   private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
     try {
       write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
-    } catch (org.apache.thrift.TException te) {
+    } catch (TException te) {
       throw new java.io.IOException(te);
     }
   }
@@ -817,7 +817,7 @@ public class SentiRequestObject implements org.apache.thrift.TBase<SentiRequestO
   private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException {
     try {
       read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
-    } catch (org.apache.thrift.TException te) {
+    } catch (TException te) {
       throw new java.io.IOException(te);
     }
   }
@@ -830,7 +830,7 @@ public class SentiRequestObject implements org.apache.thrift.TBase<SentiRequestO
 
   private static class SentiRequestObjectStandardScheme extends StandardScheme<SentiRequestObject> {
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot, SentiRequestObject struct) throws org.apache.thrift.TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot, SentiRequestObject struct) throws TException {
       org.apache.thrift.protocol.TField schemeField;
       iprot.readStructBegin();
       while (true)
@@ -907,7 +907,7 @@ public class SentiRequestObject implements org.apache.thrift.TBase<SentiRequestO
       struct.validate();
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot, SentiRequestObject struct) throws org.apache.thrift.TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot, SentiRequestObject struct) throws TException {
       struct.validate();
 
       oprot.writeStructBegin(STRUCT_DESC);
@@ -973,7 +973,7 @@ public class SentiRequestObject implements org.apache.thrift.TBase<SentiRequestO
   private static class SentiRequestObjectTupleScheme extends TupleScheme<SentiRequestObject> {
 
     @Override
-    public void write(org.apache.thrift.protocol.TProtocol prot, SentiRequestObject struct) throws org.apache.thrift.TException {
+    public void write(org.apache.thrift.protocol.TProtocol prot, SentiRequestObject struct) throws TException {
       TTupleProtocol oprot = (TTupleProtocol) prot;
       oprot.writeString(struct.mainText);
       BitSet optionals = new BitSet();
@@ -1017,7 +1017,7 @@ public class SentiRequestObject implements org.apache.thrift.TBase<SentiRequestO
     }
 
     @Override
-    public void read(org.apache.thrift.protocol.TProtocol prot, SentiRequestObject struct) throws org.apache.thrift.TException {
+    public void read(org.apache.thrift.protocol.TProtocol prot, SentiRequestObject struct) throws TException {
       TTupleProtocol iprot = (TTupleProtocol) prot;
       struct.mainText = iprot.readString();
       struct.setMainTextIsSet(true);
